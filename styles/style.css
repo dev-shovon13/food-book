@@ -1,0 +1,10 @@
+header{
+    background-image: url(../images/bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+}
+.nav a:hover{
+    color: black !important;
+    background: rgba(128, 128, 0, 0.336);
+}
