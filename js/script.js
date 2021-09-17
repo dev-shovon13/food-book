@@ -15,7 +15,7 @@ const loadFood = () => {
 }
 document.getElementById("search-btn").addEventListener("click", loadFood)
 document.getElementById("food-input").addEventListener("keypress", function (event) {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
         document.getElementById("search-btn").click()
     }
 })
