@@ -14,18 +14,27 @@ const loadFood = () => {
 
 }
 document.getElementById("search-btn").addEventListener("click", loadFood)
+document.getElementById("food-input").addEventListener("keypress", function (event) {
+    if (event.keyCode === 13) {
+        document.getElementById("search-btn").click()
+    }
+})
 
 const displayFood = (items) => {
     const foodContainer = document.getElementById("show-food")
     for (const item of items) {
         const div = document.createElement("div")
-        div.classList.add("col-6", "col-md-4", "col-lg-3", "border", "p-2")
+        div.classList.add("col-6", "col-md-4", "col-lg-3")
         div.innerHTML = `
+    <div class="card h-100 p-2 border">
         <img src=${item.strMealThumb} class="img-fluid rounded">
-        <h5 class="my-2 text-dark fw-bold">${item.strMeal}</h5>
+        <div class="card-body">
+            <h5 class="my-2 text-dark fw-bold">${item.strMeal}</h5>
             <h5>Category: <span class="fw-light">${item.strCategory}</span></h5>
             <h5>Area: <span class="fw-light">${item.strArea}</span></h5>
-        <a onclick="foodDetails('${item.idMeal}')" href="#" class="btn btn-success mt-3">Show Recipe</a>`
+        </div>
+        <a onclick="foodDetails('${item.idMeal}')" href="#" class="btn btn-success mt-3">Show Recipe</a>
+    </div>`
         foodContainer.appendChild(div)
     }
 }
@@ -38,9 +47,10 @@ const foodDetails = (item) => {
 const showFoodDetails = (item) => {
     const foodInfoShow = document.getElementById("food-info")
     const div = document.createElement("div")
-    div.classList.add("card")
+    div.classList.add("mb-3")
     div.innerHTML = `
-        <div class="card-header">
+    <div class="card h-100 p-2 border">
+        <div class="card-header border">
             <h2> ${item.strMeal}</h2>
         </div>
         <div class="card-body align-items-center">
@@ -67,6 +77,7 @@ const showFoodDetails = (item) => {
                 <p class="card-text text-start">${item.strInstructions}</p>
             </div>
         </div>
+    </div>
     `
     foodInfoShow.appendChild(div)
 }
